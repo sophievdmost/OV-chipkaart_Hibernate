@@ -1,13 +1,18 @@
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 
+@Entity
 public class Product {
+    @Id
     private int product_nummer;
     private String naam;
     private String beschrijving;
     private int prijs;
     private List<OVChipkaart> ovChipkaartList;
+
 
     public Product(int product_nummer, String naam, String beschrijving, int prijs) {
         this.product_nummer = product_nummer;

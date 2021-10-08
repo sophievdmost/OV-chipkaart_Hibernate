@@ -1,12 +1,18 @@
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Adres {
+
+    @Id
     private int id;
     private String postcode;
     private String huisnummer;
     private String straat;
     private String woonplaats;
-    private domein.Reiziger reiziger;
+    private Reiziger reiziger;
 
     public Adres(int id, String postcode, String huisnummer, String straat, String woonplaats, Reiziger reiziger) {
         this.id = id;
@@ -17,6 +23,7 @@ public class Adres {
         this.reiziger = reiziger;
 
     }
+
 
     public int getId() {
         return id;

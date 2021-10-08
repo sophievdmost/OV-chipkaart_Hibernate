@@ -1,9 +1,15 @@
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 import java.util.List;
 
+@Entity(name="Reiziger")
+
 public class Reiziger {
+
+    @Id
     private int id;
     private String voorletters;
     private String tussenvoegsel;
@@ -11,6 +17,7 @@ public class Reiziger {
     private Date geboortedatum;
     private Adres adres;
     private List<OVChipkaart> ovChipkaart;
+
 
     public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {
         this.id = id;

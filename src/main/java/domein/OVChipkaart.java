@@ -1,9 +1,13 @@
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 import java.util.List;
 
+@Entity
 public class OVChipkaart {
+    @Id
     private int kaart_nummer;
     private Date geldig_tot;
     private int klasse;

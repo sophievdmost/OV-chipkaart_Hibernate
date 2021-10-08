@@ -29,7 +29,8 @@ public class Main {
     static {
         try {
             // Create a Hibernate session factory
-            factory = new Configuration().configure().buildSessionFactory();
+            factory = new Configuration().configure().addAnnotatedClass(Adres.class).buildSessionFactory();
+
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
