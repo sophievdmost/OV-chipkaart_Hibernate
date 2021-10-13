@@ -1,7 +1,6 @@
 package domein;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -10,17 +9,29 @@ import java.util.List;
 public class Reiziger {
 
     @Id
-    private int id;
+    private int reiziger_id;
+
+    @Column
     private String voorletters;
     private String tussenvoegsel;
     private String achternaam;
     private Date geboortedatum;
+
+    @OneToOne
+    @JoinColumn(name = "reiziger_id")
     private Adres adres;
+
+    @OneToMany
+    @JoinColumn(name = "reiziger_id")
     private List<OVChipkaart> ovChipkaart;
 
 
+    public Reiziger(){
+
+    }
+
     public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {
-        this.id = id;
+        this.reiziger_id = id;
         this.voorletters = voorletters;
         this.tussenvoegsel = tussenvoegsel;
         this.achternaam = achternaam;
@@ -44,11 +55,11 @@ public class Reiziger {
     }
 
     public int getId() {
-        return id;
+        return reiziger_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.reiziger_id = id;
     }
 
     public String getVoorletters() {
@@ -86,7 +97,7 @@ public class Reiziger {
     @Override
     public String toString() {
         return "Reiziger{" +
-                "id=" + id +
+                "id=" + reiziger_id +
                 ", voorletters='" + voorletters + '\'' +
                 ", tussenvoegsel='" + tussenvoegsel + '\'' +
                 ", achternaam='" + achternaam + '\'' +

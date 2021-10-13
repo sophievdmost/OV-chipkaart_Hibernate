@@ -1,18 +1,25 @@
 package domein;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Product {
+@Table(name = "product")
+public class Product  {
     @Id
     private int product_nummer;
+
+    @Column
     private String naam;
     private String beschrijving;
     private int prijs;
+
+    @ManyToMany(mappedBy =  "producten", targetEntity = OVChipkaart.class)
     private List<OVChipkaart> ovChipkaartList;
 
+    public Product(){
+
+    }
 
     public Product(int product_nummer, String naam, String beschrijving, int prijs) {
         this.product_nummer = product_nummer;

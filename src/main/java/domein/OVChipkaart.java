@@ -1,20 +1,33 @@
 package domein;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "ov_chipkaart")
 public class OVChipkaart {
     @Id
     private int kaart_nummer;
+
+    @Column
     private Date geldig_tot;
     private int klasse;
     private int saldo;
+    private int reiziger_id;
+
+    @ManyToOne
+    @JoinColumn(name = "reiziger_id", insertable = false, updatable = false)
     private Reiziger reiziger;
+
+    @ManyToMany
+    @JoinTable(name = "ov_chipkaart_product", joinColumns = {@JoinColumn(name = "kaart_nummer")},
+            inverseJoinColumns = {@JoinColumn(name = "product_nummer")})
     private List<Product > producten;
 
+    public OVChipkaart(){
+
+    }
 
     public OVChipkaart(int kaart_nummer, Date geldig_tot, int klasse, int saldo, Reiziger reiziger) {
         this.kaart_nummer = kaart_nummer;

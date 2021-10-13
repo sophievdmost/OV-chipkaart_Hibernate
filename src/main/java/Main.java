@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class Main {
     static {
         try {
             // Create a Hibernate session factory
-            factory = new Configuration().configure().addAnnotatedClass(Adres.class).buildSessionFactory();
+            factory = new Configuration().configure().buildSessionFactory();
 
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
@@ -48,6 +49,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         testFetchAll();
+        testje();
     }
 
     /**
@@ -67,6 +69,23 @@ public class Main {
                 System.out.println();
             }
         } finally {
+            session.close();
+        }
+    }
+
+    private static void testje(){
+        Session session = getSession();
+        try{
+            Reiziger test = new Reiziger();
+            test.setId(78);
+            test.setVoorletters("s");
+            test.setTussenvoegsel("van der");
+            test.setAchternaam("Most");
+            test.setGeboortedatum(Date.valueOf("1999-12-1"));
+
+
+            session.save(test);
+        }finally {
             session.close();
         }
     }
