@@ -54,11 +54,11 @@ public class Reiziger {
         this.ovChipkaart = (List<OVChipkaart>) ovChipkaart;
     }
 
-    public int getId() {
+    public int getReiziger_Id() {
         return reiziger_id;
     }
 
-    public void setId(int id) {
+    public void setReiziger_Id(int id) {
         this.reiziger_id = id;
     }
 

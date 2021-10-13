@@ -70,11 +70,11 @@ public class OVChipkaart {
     }
 
     public int getReisigerid() {
-        return reiziger.getId();
+        return reiziger.getReiziger_Id();
     }
 
     public void setReisigerid(int reisigerid) {
-        reiziger.setId(reisigerid);
+        reiziger.setReiziger_Id(reisigerid);
     }
 
     public Reiziger getReiziger() {
