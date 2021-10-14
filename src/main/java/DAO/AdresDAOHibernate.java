@@ -78,6 +78,7 @@ public class AdresDAOHibernate implements AdresDAO {
             Transaction trans = session.beginTransaction();
             List<Adres> adres = session.createQuery("FROM Adres", Adres.class).getResultList();
             List<Adres> adreslijst = new ArrayList<>(adres);
+            trans.commit();
             return adreslijst;
 
         }

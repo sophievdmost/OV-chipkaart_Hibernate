@@ -17,11 +17,15 @@ public class Adres {
     private String woonplaats;
     private int reiziger_id;
 
+    @OneToOne
+    @JoinColumn(name = "adres_id")
+    private Reiziger reiziger;
+
     public Adres(){
 
     }
 
-    public Adres(int id, String postcode, String huisnummer, String straat, String woonplaats, int reiziger_id) {
+    public Adres(int id,String huisnummer, String postcode, int reiziger_id, String straat, String woonplaats ) {
         this.adres_id = id;
         this.postcode = postcode;
         this.huisnummer = huisnummer;
@@ -31,9 +35,7 @@ public class Adres {
 
     }
 
-    @OneToOne
-    @JoinColumn(name = "adres_id")
-    private Reiziger reiziger;
+
 
     public int getAdres_id() {
         return adres_id;
@@ -51,11 +53,21 @@ public class Adres {
         this.postcode = postcode;
     }
 
-    public int getReiziger_id() {
+
+//    public int getReizigerID() {
+//        return reiziger.getReiziger_Id();
+//    }
+//
+//    public void setReizigerID(int reisigerid) {
+//        reiziger.setReiziger_Id(reisigerid);
+//    }
+
+
+    public int getReizigerID() {
         return reiziger_id;
     }
 
-    public void setReiziger_id(int reiziger_id) {
+    public void setReizigerID(int reiziger_id) {
         this.reiziger_id = reiziger_id;
     }
 
@@ -108,7 +120,7 @@ public class Adres {
                 ", huisnummer='" + huisnummer + '\'' +
                 ", straat='" + straat + '\'' +
                 ", woonplaats='" + woonplaats + '\'' +
-                 +
+                  "reisigerid=" + reiziger_id +
                 '}';
     }
 }
