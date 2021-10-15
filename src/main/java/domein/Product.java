@@ -61,6 +61,7 @@ public class Product  {
     }
 
     public List<OVChipkaart> getOvChipkaartList() {
+        System.out.println(ovChipkaartList);
         return ovChipkaartList;
     }
 

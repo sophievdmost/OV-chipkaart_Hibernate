@@ -63,10 +63,12 @@ public class ProductDAOHibernate implements ProductDAO {
     public List<Product> findByOvchipkaart(OVChipkaart ovChipkaart) {
         try{
             Transaction trans = session.beginTransaction();
-            List<Product> alleProducten = session.createQuery("FROM Product ", Product.class).getResultList();
+            List<Product> alleProducten = session.createQuery("FROM Product", Product.class).getResultList();
             List<Product> ovProducten = new ArrayList<>();
             for(Product product : alleProducten){
-                if(product.getOvChipkaartList().contains(ovChipkaart)){
+//                System.out.println(product);
+//                System.out.println(alleProducten);
+                if(ovChipkaart.getProducten().contains(product)){
                     ovProducten.add(product);
                 }
             }

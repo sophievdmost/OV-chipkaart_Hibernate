@@ -91,6 +91,7 @@ public class Main {
         OVChipkaart ovChipkaart = new OVChipkaart(69699, java.sql.Date.valueOf("2030-11-19"), 2, 1000, 69);
         Product product = new Product(60, "TEST PRODUCT", "TEST BESCHRIJVINGEN VOOR PRODUCT", 10);
 
+
         System.out.println("--------------[TEST REIZIGER]----------------");
         ///save + findall
         System.out.println("---[TEST]--- save + findall");
@@ -125,7 +126,7 @@ public class Main {
 
         //delete
         System.out.println("---[TEST]--- delete");
-        System.out.println(adao.findAll()+ "\n");
+        System.out.println(adao.findAll());
         adao.delete(adres);
         System.out.println(adao.findAll()+ "\n");
 
@@ -147,6 +148,15 @@ public class Main {
 
         //findByOvchimp
         ///insert test findbyov
+        System.out.println("---[TEST]--- find by ov chipkaart");
+        OVChipkaart ovChipkaart1 = new OVChipkaart(66666,java.sql.Date.valueOf("2030-11-19"), 1, 70, 69 );
+        List<Product> testprod1 = new ArrayList<>();
+        testprod1.add(product);
+        ovChipkaart1.setProducten(testprod1);
+        ovdao.save(ovChipkaart1);
+        System.out.println(pdao.findByOvchipkaart(ovChipkaart1));
+        ovdao.delete(ovChipkaart1);
+
 
         //ovchipkaart
         System.out.println("--------------[TEST OVCHIPKAART]----------------");
@@ -179,6 +189,8 @@ public class Main {
         System.out.println("---[TEST]--- ovchip");
         System.out.println(ovdao.findAll());
         ovdao.delete(ovChipkaart);
+
+
         System.out.println(ovdao.findAll());
 
         //product
@@ -192,5 +204,5 @@ public class Main {
         System.out.println(rdao.findAll());
         rdao.delete(reizigertest);
         System.out.println(rdao.findAll());
-    }
+  }
 }
