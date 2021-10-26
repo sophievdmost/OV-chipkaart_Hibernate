@@ -2,6 +2,7 @@ package domein;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="Reiziger")
@@ -21,9 +22,8 @@ public class Reiziger {
     @JoinColumn(name = "reiziger_id")
     private Adres adres;
 
-    @OneToMany
-    @JoinColumn(name = "reiziger_id")
-    private List<OVChipkaart> ovChipkaart;
+    @OneToMany(mappedBy = "reiziger", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<OVChipkaart> ovChipkaart = new ArrayList<OVChipkaart>();
 
 
     public Reiziger(){
