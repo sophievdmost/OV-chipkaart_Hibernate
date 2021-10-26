@@ -191,6 +191,7 @@ public class Main {
         ovdao.delete(ovChipkaart);
 
 
+
         System.out.println(ovdao.findAll());
 
         //product

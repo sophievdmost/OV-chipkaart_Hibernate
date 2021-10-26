@@ -17,7 +17,7 @@ public class Reiziger {
     private String achternaam;
     private Date geboortedatum;
 
-    @OneToOne
+    @OneToOne(mappedBy = "reiziger", targetEntity = Adres.class)
     @JoinColumn(name = "reiziger_id")
     private Adres adres;
 
